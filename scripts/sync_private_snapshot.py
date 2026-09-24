@@ -60,13 +60,11 @@ def transform_index(source: Path) -> None:
     (ROOT / "frontend" / "index.html").write_text(text, encoding="utf-8")
 
 
-def public_review_import() -> None:
+def normalize_review_source() -> None:
     path = ROOT / "scripts" / "pipeline" / "review_alerts.py"
     text = path.read_text(encoding="utf-8")
-    private = "from page_store import put_reviewed_alerts  # noqa: E402"
-    if private not in text:
+    if "from page_store import put_reviewed_alerts  # noqa: E402" not in text:
         raise RuntimeError("review-alert storage import changed upstream")
-    text = text.replace(private, "from alert_store import put_reviewed_alerts  # noqa: E402")
     text = text.replace("or cases where you are absolutely unsure what school is affected. \n",
                         "or cases where you are absolutely unsure what school is affected.\n")
     path.write_text(text, encoding="utf-8")
@@ -87,7 +85,7 @@ def main() -> None:
     for relative in manifest["copy"]:
         copy_file(source, relative)
     transform_index(source)
-    public_review_import()
+    normalize_review_source()
     commit = tracked_commit(source)
     marker = ROOT / "OPEN_SOURCE_MANIFEST"
     lines = marker.read_text(encoding="utf-8").splitlines()

@@ -35,7 +35,7 @@ test("the public server exposes only read-only APIs", async () => {
   assert.doesNotMatch(server, /comments|subscriptions|modal/i);
 });
 
-test("repository starts with one current-state migration", async () => {
+test("repository has a current-state baseline and additive public migrations", async () => {
   const files = await readdir(new URL("../migrations", import.meta.url));
-  assert.deepEqual(files.sort(), ["0001_baseline.sql"]);
+  assert.deepEqual(files.sort(), ["0001_baseline.sql", "0002_onboarding_storage.sql"]);
 });
