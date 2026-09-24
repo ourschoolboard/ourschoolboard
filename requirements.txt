@@ -1,0 +1,7 @@
+beautifulsoup4>=4.12,<5
+boto3>=1.35,<2
+playwright>=1.50,<2
+psycopg2-binary>=2.9,<3
+pypdf>=5,<6
+requests>=2.32,<3
+youtube-transcript-api>=1,<2

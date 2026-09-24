@@ -1,0 +1,26 @@
+{
+  "name": "ourschoolboard",
+  "version": "0.1.0",
+  "license": "AGPL-3.0-only",
+  "private": false,
+  "type": "module",
+  "scripts": {
+    "content:import": "python3 scripts/import_legacy_content.py",
+    "dev": "node backend/server.js",
+    "start": "NODE_ENV=production node backend/server.js",
+    "test": "node --test tests/*.test.js",
+    "check": "for f in backend/*.js frontend/*.js; do node --check \"$f\" || exit 1; done && echo 'syntax ok'",
+    "refresh": "python3 scripts/weston_refresh.py",
+    "build:weston": "python3 scripts/build_weston_insights.py",
+    "migrate": "node scripts/migrate.js up",
+    "migrate:status": "node scripts/migrate.js status",
+    "migrate:verify": "node scripts/migrate.js verify",
+    "scrape:due": "python3 scripts/pipeline/execute.py --due"
+  },
+  "dependencies": {
+    "pg": "^8.13.1"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

@@ -1,0 +1,47 @@
+name: CI
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: ourschoolboard_test
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      DATABASE_URL: postgres://postgres:postgres@localhost:5432/ourschoolboard_test
+      APP_ENV: production
+      NODE_ENV: test
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: npm ci
+      - run: pip install -r requirements.txt
+      - run: npm run migrate
+      - run: npm run migrate:verify
+      - run: npm run check
+      - run: npm test
+      - run: python3 -m unittest discover -s tests -p 'test_*.py'
+      - name: Verify public boundary
+        run: |
+          test ! -d data
+          test ! -d docs
+          test ! -d deploy
+          test ! -e frontend/district.html
+          ! find . -path ./.git -prune -o -type f -print | grep -E '(^|/)(TODO|todo|NOTES|notes)\.md$'
+          ! grep -RIlE 'modal_agents|JOURNALIST_SEARCH_PASSWORDS|/api/comments|/api/subscription' backend frontend .claude

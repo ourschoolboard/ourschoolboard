@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Get alerts when big changes come to your school · ourschoolboard.org</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<meta name="description" content="Plain-language alerts about key policies, major hires, and red flags in your district — each one linked to the official record." />
+<meta property="og:title" content="Get alerts when big changes come to your school" />
+<meta property="og:description" content="We read the minutes, packets, and agendas so you don't have to. Every alert links back to the official document." />
+<meta property="og:type" content="website" />
+<link rel="preload" as="image" href="/assets/watercolor-schoolhouse.webp" type="image/webp" fetchpriority="high" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&amp;display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/landing.css" />
+<link rel="stylesheet" href="/landing-redesign.css" />
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-v0wlsDW9bQTDRgJJed3y9.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+</script>
+</head>
+<body class="landing-page">
+<a class="skip" href="#why">Skip to how it works</a>
+
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="landing-watercolor-broad" x="-35%" y="-35%" width="170%" height="170%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.011 0.019" numOctaves="4" seed="3" result="noise" />
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="48" xChannelSelector="R" yChannelSelector="G" />
+      <feGaussianBlur stdDeviation="1.4" />
+    </filter>
+    <filter id="landing-watercolor-edge" x="-40%" y="-40%" width="180%" height="180%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.03 0.05" numOctaves="3" seed="31" result="noise" />
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="9" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+    <filter id="landing-watercolor-wash" x="-15%" y="-45%" width="130%" height="190%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.013 0.032" numOctaves="2" seed="12" result="noise" />
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="30" xChannelSelector="R" yChannelSelector="G" />
+      <feGaussianBlur stdDeviation="2.4" />
+    </filter>
+  </defs>
+  <symbol id="i-clock" viewBox="0 0 48 48">
+    <circle cx="24" cy="25" r="13" fill="none" stroke="currentColor" stroke-width="2.2" />
+    <path d="M24 17.5V25l5.5 3.4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+  </symbol>
+  <symbol id="i-overload" viewBox="0 0 48 48">
+    <path d="M10 15h28M10 22h28M10 29h28M10 36h28" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+    <circle cx="34" cy="15" r="4.5" fill="var(--accent)" />
+  </symbol>
+  <symbol id="i-buried" viewBox="0 0 48 48">
+    <rect x="13" y="9" width="22" height="30" rx="2.5" fill="none" stroke="currentColor" stroke-width="2.2" />
+    <path d="M18 16h12M18 21h12M18 33h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity=".42" />
+    <rect x="17" y="25" width="16" height="4" rx="2" fill="var(--accent)" />
+  </symbol>
+</svg>
+
+<div class="landing-shell">
+  <header class="landing-nav">
+    <a class="brand" href="/">
+      <img class="brand-mark" src="/favicon.svg" alt="" aria-hidden="true" />
+      <span class="brand-text">ourschoolboard<span class="brand-dim">.org</span></span>
+    </a>
+    <nav class="landing-nav-links" aria-label="Primary navigation">
+      <a class="nav-saved-district" id="nav-saved-district-link" data-saved-district-link href="/feed.html" hidden><span data-saved-district-name>View</span></a>
+      <a class="landing-nav-cta" href="/explore">Find my district</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero landing-hero">
+      <div class="landing-hero-copy">
+        <div class="parent-trust">
+          <span class="parent-faces" aria-hidden="true">
+            <img src="/assets/parent-avatar-32.webp" alt="" width="32" height="32" decoding="async" />
+            <img src="/assets/parent-avatar-15.webp" alt="" width="32" height="32" decoding="async" />
+            <img src="/assets/parent-avatar-47.webp" alt="" width="32" height="32" decoding="async" />
+            <img src="/assets/parent-avatar-26.webp" alt="" width="32" height="32" decoding="async" />
+            <img src="/assets/parent-avatar-5.webp" alt="" width="32" height="32" decoding="async" />
+          </span>
+          <span>Trusted by 100s of parents</span>
+        </div>
+        <h1 id="hero-heading">Get alerts when <em>big changes</em> come to your school.</h1>
+        <p class="landing-lede" id="hero-lede">Plain-language alerts about key policies, major hires, and red flags in your district — each one linked to the official record.</p>
+        <script>
+          /* Hero copy A/B test: assignment and (when needed) the text swap
+             both happen here, inline and synchronous, right after the
+             elements they touch — so a visitor drawn into variant B never
+             sees variant A flash before it. The draw is stuck in
+             localStorage so the same visitor keeps the same headline on
+             every later visit. Visitors with JS off, and crawlers that don't
+             run it, just keep the variant A markup already on the page —
+             a sane, real headline either way. */
+          (function () {
+            var KEY = "osb:hero-variant";
+            var variant = "a";
+            try {
+              variant = localStorage.getItem(KEY);
+              if (variant !== "a" && variant !== "b") {
+                variant = Math.random() < 0.5 ? "a" : "b";
+                localStorage.setItem(KEY, variant);
+              }
+            } catch (e) {
+              // Storage blocked (private browsing, etc.) — default to variant A
+              // rather than let the test break the page.
+              variant = "a";
+            }
+            window.__heroVariant = variant;
+            if (variant === "b") {
+              var heading = document.getElementById("hero-heading");
+              var lede = document.getElementById("hero-lede");
+              if (heading) heading.textContent = "Know your school board.";
+              if (lede) lede.textContent = "Proactive alerts about key policies, major hires, and red flags in your district.";
+            }
+          })();
+        </script>
+        <div class="landing-hero-actions">
+          <a class="button-primary landing-button landing-button-primary" id="hero-primary-cta" href="/explore">Find my district</a>
+          <a class="landing-button landing-button-saved" id="saved-district-link" data-saved-district-link href="/feed.html" hidden><span id="saved-district-name" data-saved-district-name>View</span></a>
+          <a class="landing-text-link" href="#why">Learn more</a>
+        </div>
+      </div>
+
+      <div class="landing-hero-stage" aria-label="Examples of school alerts">
+        <picture>
+          <source srcset="/assets/watercolor-schoolhouse.webp" type="image/webp" />
+          <img class="hero-watercolor" src="/assets/watercolor-schoolhouse.jpg" alt="" width="1115" height="800" fetchpriority="high" decoding="async" />
+        </picture>
+        <div class="landing-float-cluster" id="float-cluster"></div>
+      </div>
+    </section>
+
+    <section class="values-strip" aria-label="Free, nonprofit, and open-source">
+      <div aria-hidden="true"><span>Free</span><i></i><span>Nonprofit</span><i></i><span>Open-source</span></div>
+    </section>
+
+    <section class="landing-problems" id="why">
+      <div class="landing-section-head">
+        <h2>You shouldn't be the last to know.</h2>
+        <p>Three things stand between your family and the decisions that shape your kid's year.</p>
+      </div>
+      <div class="landing-problem-grid">
+        <article class="landing-problem reveal coral-card">
+          <span class="watercolor-icon"><svg><use href="#i-clock" /></svg></span>
+          <h3>By the time you hear, it's already decided</h3>
+          <p>The vote happened in March. You found out in September, when the schedule changed and nobody could tell you why.</p>
+        </article>
+        <article class="landing-problem reveal amber-card">
+          <span class="watercolor-icon"><svg><use href="#i-overload" /></svg></span>
+          <h3>Information overload</h3>
+          <p>A constant stream of emails, notifications, and newsletters without a way to tell what <em>matters</em>.</p>
+        </article>
+        <article class="landing-problem reveal teal-card">
+          <span class="watercolor-icon"><svg><use href="#i-buried" /></svg></span>
+          <h3>The part that matters is buried</h3>
+          <p>Three hundred pages of routine business, and one paragraph that changes your child's year. It's in there. Nobody highlights it.</p>
+        </article>
+      </div>
+      <a class="landing-board-explainer" href="#why">What is a school board, and why does it matter? <span aria-hidden="true">→</span></a>
+    </section>
+
+    <section class="landing-how" id="how">
+      <div class="landing-section-head">
+        <h2>Email alerts. Verified sources.</h2>
+        <p>Not a newsletter. A standing watch on the room where it happens.</p>
+      </div>
+      <div class="watch-grid">
+        <div class="watch-tabs" role="tablist" aria-label="How ourschoolboard works">
+          <button class="watch-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="watch-panel" data-watch-step="0"><span>01</span> We read every page</button>
+          <button class="watch-tab" type="button" role="tab" aria-selected="false" aria-controls="watch-panel" data-watch-step="1"><span>02</span> Only what reaches your kid</button>
+          <button class="watch-tab" type="button" role="tab" aria-selected="false" aria-controls="watch-panel" data-watch-step="2"><span>03</span> Proof, not paraphrase</button>
+        </div>
+        <div class="watch-panel" id="watch-panel" role="tabpanel" tabindex="0" data-watch-step="0">
+          <section class="watch-step-content is-active" data-watch-content="0">
+            <div class="watch-wash" aria-hidden="true"></div>
+            <p>Minutes, packets, agendas — all of it, every meeting — so you can skip straight to what touches your family.</p>
+            <dl class="watch-stats" id="watch-stats">
+              <div><dd data-stat="documents">171</dd><dt>Documents read</dt></div>
+              <div><dd data-stat="minutes">71</dd><dt>Sets of minutes</dt></div>
+              <div><dd data-stat="alerts">38</dd><dt>Alerts published</dt></div>
+            </dl>
+          </section>
+          <section class="watch-step-content" data-watch-content="1" hidden>
+            <div class="watch-wash" aria-hidden="true"></div>
+            <p>Choose once: budgets, hires, policy, red flags. Nothing else lands in your inbox.</p>
+            <div class="watch-chips" aria-label="Alert topics">
+              <span class="is-highlighted">Budgets</span><span class="is-highlighted">Red flags</span><span>Hires</span><span>Policy</span>
+            </div>
+            <div class="watch-signals" aria-label="Example school-board signals">
+              <div class="watch-signal cat-risk"><i></i><b>Safety</b><span>Kennedy High closes after underground PCE is found</span></div>
+              <div class="watch-signal cat-facilities"><i></i><b>Facilities</b><span>$25.7M committed to an interim middle-school campus</span></div>
+              <div class="watch-signal cat-risk"><i></i><b>Safety</b><span>Failing roof trusses trigger an emergency repair vote</span></div>
+              <div class="watch-signal is-routine cat-facilities"><i></i><b>Facilities</b><span>Middle-school rebuild may require modular classrooms</span></div>
+              <div class="watch-signal is-routine cat-budget"><i></i><b>Facilities</b><span>Four schools approved for permanent closure</span></div>
+            </div>
+          </section>
+          <section class="watch-step-content" data-watch-content="2" hidden>
+            <div class="watch-wash" aria-hidden="true"></div>
+            <p>Every alert quotes the document and links to it — so you can check us, and bring the receipt to the meeting.</p>
+            <p class="watch-label">The evidence</p>
+            <p class="watch-evidence">The January 5 minutes record the principal describing a bell-to-bell ban, the choice of lockers over Yondr pouches as a cost-neutral solution, and her note that no other high school has successfully implemented a full ban.</p>
+            <p class="watch-label">The source</p>
+            <a class="watch-source" href="https://www.westonma.gov/AgendaCenter/ViewFile/Minutes/_01052026-8774">
+              <span class="watch-source-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 2.5h8l4.5 4.5v14.5H6z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" /><path d="M9.5 12h6M9.5 16h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".55" /></svg></span>
+              <span><strong>Minutes — January 5, 2026</strong><small>westonma.gov · official town records</small></span>
+              <b>Open <span aria-hidden="true">→</span></b>
+            </a>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section class="truth-section" id="source-of-truth">
+      <div class="landing-section-head truth-heading">
+        <p class="landing-eyebrow">Platform</p>
+        <h2>The source of truth for understanding your school</h2>
+        <p>Follow a decision over time, understand the policy behind it, and choose how you want to respond.</p>
+      </div>
+      <div class="truth-grid">
+        <article class="truth-card truth-policy reveal">
+          <div class="truth-preview policy-preview" aria-hidden="true">
+            <div class="preview-bar"><span></span><span></span><span></span></div>
+            <p>School phone policy guide</p>
+            <div class="state-snapshot"><b>Your state</b><strong>Limits in place</strong></div>
+            <div class="research-lines"><i></i><i></i><i></i></div>
+          </div>
+          <h3>Research-backed guidance</h3>
+          <p>See what your state requires, what credible studies actually found, and where implementation can go wrong.</p>
+          <a href="/journalist-data">Explore alert patterns <span aria-hidden="true">→</span></a>
+        </article>
+
+        <article class="truth-card truth-history reveal">
+          <div class="truth-preview history-preview" aria-hidden="true">
+            <div class="history-line"></div>
+            <div><i></i><span><small>May 2026</small><b>Board schedules a policy vote</b></span></div>
+            <div><i></i><span><small>June 2026</small><b>Final language is published</b></span></div>
+            <div><i></i><span><small>August 2026</small><b>Implementation begins</b></span></div>
+          </div>
+          <h3>A durable record of past alerts</h3>
+          <p>Trace how a proposal changed, revisit the official evidence, and catch up without reconstructing months of meeting packets.</p>
+          <a href="/feed.html">Browse alert history <span aria-hidden="true">→</span></a>
+        </article>
+
+        <article class="truth-card truth-action reveal">
+          <div class="truth-preview action-preview" aria-hidden="true">
+            <div><span>Hear from people</span><b>Start a district poll</b></div>
+            <div><span>Evaluate a proposal</span><b>Review the district's plan</b></div>
+            <div><span>Speak publicly</span><b>Prepare for a board meeting</b></div>
+          </div>
+          <h3>Community engagement</h3>
+          <p>Poll your community, review a proposal, prepare public comment, email the board, or host a listening session.</p>
+          <a href="/feed.html">See alerts with action options <span aria-hidden="true">→</span></a>
+        </article>
+      </div>
+    </section>
+
+    <section class="landing-journalists" aria-labelledby="landing-journalists-title">
+      <div class="landing-journalists-copy">
+        <p class="landing-eyebrow">For journalists</p>
+        <h2 id="landing-journalists-title">Research and Analysis Tools for Journalists</h2>
+        <p>Compare published alert patterns by state, topic, district, and month, then open the source-linked alert.</p>
+      </div>
+      <div class="landing-journalists-actions">
+        <a class="landing-journalists-primary" href="/journalist-data">Explore the public data</a>
+        <a class="landing-journalists-secondary" href="/journalists">For journalists</a>
+      </div>
+    </section>
+
+    <section class="recent-alerts" aria-labelledby="recent-alerts-title">
+      <p class="landing-eyebrow" id="recent-alerts-title">Recent alerts from districts nationwide</p>
+      <div class="recent-alert-viewport"><div class="recent-alert-grid" id="recent-alert-grid"></div></div>
+    </section>
+
+    <section class="landing-closer">
+      <picture>
+        <source srcset="/assets/watercolor-school-exterior.webp" type="image/webp" />
+        <img src="/assets/watercolor-school-exterior.jpg" alt="" width="2399" height="662" decoding="async" />
+      </picture>
+      <div class="landing-closer-inner">
+        <p class="landing-eyebrow">Your school board, made legible</p>
+        <h2>Alerts for thousands of schools. Find yours.</h2>
+        <p>Choose your school once. We'll surface the decisions that matter and link every alert back to the public record.</p>
+        <a class="landing-closer-cta" href="/explore">Find my district <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="landing-foot">
+    <p>ourschoolboard.org — school board decisions, in plain language, linked to the record.</p>
+    <p class="landing-foot-links">
+      <a href="#why">How it works</a>
+      <a href="/explore">Browse districts</a>
+      <a class="foot-journalists" href="/journalists">For journalists</a>
+    </p>
+  </footer>
+</div>
+
+<script src="/landing.js"></script>
+<script type="module">
+  import { renderSavedDistrictLink } from "/saved-district.js";
+  renderSavedDistrictLink();
+</script>
+</body>
+</html>

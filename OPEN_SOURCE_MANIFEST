@@ -1,0 +1,19 @@
+# Snapshot source: ourschoolboard/school-transparency@bdd609093572a78a36efd31692f39a059a2c587b
+.claude/skills/onboard-school/
+.env.example
+.github/workflows/ci.yml
+.gitignore
+CONTRIBUTING.md
+LICENSE
+README.md
+SECURITY.md
+backend/
+frontend/
+migrations/
+package-lock.json
+package.json
+requirements.txt
+scripts/migrate.js
+scripts/pipeline/
+scripts/tools/
+tests/
