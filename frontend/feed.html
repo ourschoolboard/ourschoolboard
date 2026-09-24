@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Your alert feed · ourschoolboard.org</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="/landing.css" />
+<link rel="stylesheet" href="/flow.css" />
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-v0wlsDW9bQTDRgJJed3y9.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+</script>
+</head>
+<body>
+<header class="flow-header">
+  <a class="brand" href="/">
+    <img class="brand-mark" src="/favicon.svg" alt="" aria-hidden="true" />
+    <span class="brand-text">ourschoolboard<span class="brand-dim">.org</span></span>
+  </a>
+  <div class="flow-district">
+    <div>
+      <span id="district-name">Weston Public Schools</span>
+      <small id="district-period">Loading period…</small>
+    </div>
+  </div>
+</header>
+
+<main class="flow-main">
+  <div class="title-row">
+    <h1 class="flow-title">Your alert feed</h1>
+  </div>
+  <p class="flow-sub" id="feed-sub">Decisions from the School Committee record, in plain language.</p>
+  <aside class="district-feed-fallback" id="district-feed-fallback" hidden></aside>
+  <span class="coverage-tag" id="coverage-tag" tabindex="0" hidden>Incomplete data</span>
+
+  <div class="controls">
+    <label class="visually-hidden" for="search">Search alerts</label>
+    <input class="search" id="search" type="search" autocomplete="off"
+           placeholder="Search alerts — e.g. superintendent, phones, budget, building" />
+    <label class="school-filter" id="school-filter-wrap" for="school-filter" hidden>
+      <span>School</span>
+      <select id="school-filter"><option value="">All schools</option></select>
+    </label>
+    <div class="chips" id="chips" role="group" aria-label="Filter by category"></div>
+    <p class="result-count" id="result-count">Loading…</p>
+  </div>
+
+  <div class="alert-list" id="alert-list">
+    <p class="loading">Loading the record…</p>
+  </div>
+
+</main>
+
+<footer class="ai-note">AI can make mistakes. We work to ensure accuracy and auditability by sharing sources you can reference.</footer>
+
+<script type="module" src="/feed.js"></script>
+</body>
+</html>

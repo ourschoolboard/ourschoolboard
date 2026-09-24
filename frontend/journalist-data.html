@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Journalist data preview · ourschoolboard.org</title>
+<meta name="description" content="Explore published school-board alert patterns by state and month." />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="/landing.css" />
+<link rel="stylesheet" href="/journalists.css" />
+<link rel="stylesheet" href="/journalist-tools.css" />
+</head>
+<body class="journalist-site journalist-data-page">
+<header class="nav journalist-nav">
+  <a class="brand" href="/"><img class="brand-mark" src="/favicon.svg" alt="" /><span class="brand-text">ourschoolboard<span class="brand-dim">.org</span></span></a>
+  <nav class="journalist-nav-links">
+    <a class="journalist-nav-link" href="/journalists">For journalists</a>
+  </nav>
+</header>
+<main class="data-main">
+  <div class="data-heading">
+    <div><p class="journalist-eyebrow">Public data preview</p><h1>What school boards are discussing</h1><p>Patterns in published OurSchool alerts. Counts reflect consequential items we flagged, not every agenda item.</p></div>
+    <label class="state-filter">State<select id="state-filter"><option value="">All states</option></select></label>
+  </div>
+
+  <p id="data-status" class="data-status" role="status">Loading published alert data…</p>
+  <div id="data-content" hidden>
+    <section class="metric-grid" aria-label="Coverage totals">
+      <article><span>Published alerts</span><strong id="metric-alerts">—</strong></article>
+      <article><span>Schools &amp; Districts</span><strong id="metric-districts">—</strong></article>
+      <article><span>District coverage</span><strong id="metric-coverage">—</strong><small id="metric-coverage-detail"></small></article>
+      <article class="metric-prose"><span>Date range</span><strong id="metric-range">—</strong></article>
+    </section>
+
+    <div class="visual-grid">
+      <section class="data-panel topic-panel"><div class="panel-heading"><div><p class="journalist-kicker">Alert patterns</p><h2>Subjects being flagged</h2></div></div><div id="topic-chart" class="topic-chart"></div></section>
+      <section class="data-panel district-panel"><div class="panel-heading"><div><p class="journalist-kicker">Concentration</p><h2>Districts with the most alerts</h2></div></div><ol id="district-ranking" class="district-ranking"></ol></section>
+    </div>
+
+    <section class="data-panel coverage-panel"><div class="panel-heading"><div><p class="journalist-kicker">Coverage by state</p><h2>How much of each state is represented</h2></div></div><div id="state-coverage" class="state-coverage"></div></section>
+
+    <section class="data-panel trend-panel"><div class="panel-heading"><div><p class="journalist-kicker">Month to month</p><h2>How the conversation changes</h2></div><div id="trend-legend" class="trend-legend"></div></div><div id="trend-chart" class="trend-chart" aria-label="Monthly alerts by subject"></div></section>
+
+    <section class="data-panel recent-panel"><div class="panel-heading"><div><p class="journalist-kicker">Drill down</p><h2>Recent published alerts</h2></div></div><div id="recent-alerts" class="recent-alerts"></div></section>
+
+    <p class="data-method">This preview uses published alerts from districts with active OurSchool pages. Missing coverage can affect comparisons. Open an alert to inspect the district’s source-linked evidence.</p>
+  </div>
+</main>
+<script type="module" src="/journalist-data.js"></script>
+</body>
+</html>

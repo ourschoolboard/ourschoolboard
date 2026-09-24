@@ -1,0 +1,42 @@
+{
+  "copy": [
+    "backend/env.js",
+    "backend/load-env.js",
+    "frontend/assets/paper.svg",
+    "frontend/assets/parent-avatar-15.webp",
+    "frontend/assets/parent-avatar-26.webp",
+    "frontend/assets/parent-avatar-32.webp",
+    "frontend/assets/parent-avatar-47.webp",
+    "frontend/assets/parent-avatar-5.webp",
+    "frontend/assets/watercolor-school-exterior.jpg",
+    "frontend/assets/watercolor-school-exterior.webp",
+    "frontend/assets/watercolor-schoolhouse.jpg",
+    "frontend/assets/watercolor-schoolhouse.webp",
+    "frontend/favicon.svg",
+    "frontend/glossary.js",
+    "frontend/landing-redesign.css",
+    "frontend/landing.css",
+    "frontend/landing.js",
+    "scripts/migrate.js",
+    "scripts/pipeline/compliance.py",
+    "scripts/pipeline/db.py",
+    "scripts/pipeline/execute.py",
+    "scripts/pipeline/index_document_text.py",
+    "scripts/pipeline/review_alerts.py",
+    "scripts/pipeline/runner.py",
+    "scripts/pipeline/safe_http.py",
+    "scripts/pipeline/sandbox.py",
+    "scripts/pipeline/schedule.py",
+    "scripts/pipeline/seed_agencies.py",
+    "scripts/pipeline/video_transcript.py",
+    "scripts/pipeline/youtube_transcript.py",
+    "scripts/tools/school_scope.py",
+    "scripts/tools/scraper_store.py",
+    "scripts/tools/source_text.py",
+    "scripts/tools/spaces_store.py",
+    ".claude/skills/onboard-school/assets/scraper_template.py"
+  ],
+  "transform": [
+    "frontend/index.html"
+  ]
+}

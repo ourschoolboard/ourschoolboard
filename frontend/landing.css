@@ -1,0 +1,615 @@
+/* ourschoolboard.org — landing.
+   Warm paper base, dark ink, editorial serif headlines. No webfonts and no
+   external JS: the page paints immediately on a phone in a school parking lot. */
+
+:root {
+  --paper: #faf8f4;
+  --paper-2: #f2ede4;
+  --paper-3: #e9e3d7;
+  --ink: #16191f;
+  --ink-soft: #5a6472;
+  --ink-faint: #8a93a0;
+  --teal: #0f7c72;
+  --amber: #bd7c12;
+  --coral: #c14a38;
+  --slate: #4a6b96;
+  --line: rgba(22, 25, 31, 0.12);
+  --line-soft: rgba(22, 25, 31, 0.07);
+  --shadow: 0 22px 48px -30px rgba(22, 25, 31, 0.5);
+  --radius: 16px;
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  --accent: var(--teal);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+.skip { position: absolute; left: -9999px; }
+.skip:focus {
+  left: 1rem; top: 1rem; z-index: 99;
+  background: var(--ink); color: var(--paper);
+  padding: 0.6rem 1rem; border-radius: 8px;
+}
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* ---------- nav ---------- */
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem clamp(1rem, 4vw, 3.5rem);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(250, 248, 244, 0.86);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.brand {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  text-decoration: none; color: var(--ink);
+  font-weight: 650; letter-spacing: -0.01em;
+}
+
+.brand-mark {
+  display: block;
+  width: 32px; height: 32px; border-radius: 9px;
+  flex: none;
+}
+
+.brand-dim { color: var(--ink-faint); font-weight: 400; }
+
+.nav-links {
+  display: flex; align-items: center;
+  gap: clamp(0.6rem, 2vw, 1.5rem);
+  font-size: 0.92rem;
+}
+
+.nav-links a { color: var(--ink-soft); text-decoration: none; transition: color 0.16s ease; }
+.nav-links a:hover { color: var(--ink); }
+
+.nav-cta {
+  background: var(--ink); color: var(--paper) !important;
+  border-radius: 999px; padding: 0.5rem 1.1rem; font-weight: 600;
+  white-space: nowrap;
+  transition: transform 0.14s ease, background 0.14s ease;
+}
+.nav-cta:hover { transform: translateY(-1px); background: #262c36; }
+
+/* The returning visitor's shortcut, sitting beside the primary call to action
+   rather than competing with it. */
+.nav-saved-district {
+  padding: 0.5rem 1.05rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--ink) !important;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: border-color 0.14s ease, background 0.14s ease;
+}
+.nav-saved-district:hover { border-color: rgba(22, 25, 31, 0.28); background: rgba(255, 255, 255, 0.7); }
+
+/* ---------- hero ---------- */
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  align-items: stretch;
+  max-width: 1340px;
+  margin: 0 auto;
+  padding: clamp(3rem, 6vw, 5.75rem) clamp(1rem, 4vw, 3.5rem);
+}
+
+.hero-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: 1rem;
+}
+
+h1 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(2.4rem, 5.2vw, 4rem);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  margin: 0 0 0.9rem;
+}
+
+h1 em {
+  font-style: italic;
+  color: var(--amber);
+  position: relative;
+  white-space: nowrap;
+}
+
+/* Hand-drawn underline under the italic phrase, so the emphasis reads as marked
+   up by a person rather than styled by a stylesheet. */
+h1 em::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -0.08em;
+  height: 0.14em;
+  background: var(--amber);
+  opacity: 0.28;
+  border-radius: 999px;
+  transform: rotate(-0.5deg);
+}
+
+.lede {
+  font-size: clamp(1rem, 1.5vw, 1.16rem);
+  color: var(--ink-soft);
+  max-width: 33rem;
+  margin: 0 0 1.8rem;
+}
+
+/* ---------- calls to action ---------- */
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  min-height: 48px;
+  padding: 0.75rem 1.2rem;
+  border: 1px solid transparent;
+  border-radius: 11px;
+  font-weight: 650;
+  text-decoration: none;
+  transition: transform 0.16s ease, background 0.16s ease, border-color 0.16s ease;
+}
+.button:hover { transform: translateY(-2px); }
+.button-primary { background: var(--ink); color: var(--paper); }
+.button-primary:hover { background: #2b323d; }
+.button-secondary { border-color: var(--line); background: rgba(255, 255, 255, 0.62); color: var(--ink); }
+.button-secondary:hover { border-color: rgba(22, 25, 31, 0.25); background: #fff; }
+/* `display: inline-flex` above outranks the UA sheet's [hidden] rule, so the
+   returning-visitor shortcut needs this to stay hidden for everyone else. */
+.button[hidden] { display: none; }
+/* A district name can still be two words; keep it on one line rather than
+   letting it wrap the button taller than the ones beside it. */
+.saved-district-button { white-space: nowrap; }
+
+/* ---------- hero stage: floating alert cards ---------- */
+
+.hero-stage { position: relative; padding-top: 0.5rem; }
+
+.stage-glow {
+  position: absolute;
+  inset: -12% -8% 12% -8%;
+  background:
+    radial-gradient(45% 40% at 30% 25%, rgba(15, 124, 114, 0.13), transparent 70%),
+    radial-gradient(42% 38% at 75% 60%, rgba(189, 124, 18, 0.13), transparent 72%);
+  filter: blur(10px);
+  pointer-events: none;
+}
+
+.float-cluster { position: relative; display: grid; gap: 0.7rem; }
+
+.float-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  background: #fff;
+  box-shadow: 0 14px 30px -24px rgba(22, 25, 31, 0.6);
+  transition: opacity 0.75s ease, transform 0.75s cubic-bezier(0.2, 0.8, 0.3, 1);
+}
+
+/* Entry state is applied by JS and removed on the next frame. Visibility is never
+   gated on an animation firing — if motion is unavailable the cards are simply
+   already there, rather than stuck at opacity 0. */
+.float-card.is-entering { transform: translateY(20px) scale(0.985); }
+
+/* A gentle staggered offset keeps the stack from reading as a plain list. */
+.float-card:nth-child(1) { margin-left: 0;      transition-delay: 0.35s; }
+.float-card:nth-child(2) { margin-left: 1.6rem; transition-delay: 0.65s; }
+.float-card:nth-child(3) { margin-left: 0.6rem; transition-delay: 0.95s; }
+.float-card:nth-child(4) { margin-left: 2.4rem; transition-delay: 1.25s; }
+
+.float-dot {
+  flex: none;
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--sev, var(--slate));
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--sev, var(--slate)) 18%, transparent);
+}
+
+.float-body { min-width: 0; }
+
+.float-title {
+  margin: 0;
+  font-size: 0.98rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  line-height: 1.28;
+}
+
+.float-meta {
+  display: flex; align-items: center; gap: 0.45rem;
+  margin-top: 0.15rem;
+  font-size: 0.74rem;
+  color: var(--ink-faint);
+}
+.float-place { color: var(--ink); font-weight: 650; }
+
+/* Hero dots are coloured by category, not severity: the cards show location and
+   date, so severity has no label to explain it and four red dots just read flat. */
+.cat-budget { --sev: var(--teal); }
+.cat-staffing { --sev: var(--amber); }
+.cat-policy { --sev: var(--slate); }
+.cat-risk { --sev: var(--coral); }
+
+.sev-high { --sev: var(--coral); }
+.sev-medium { --sev: var(--amber); }
+.sev-low { --sev: var(--slate); }
+
+.stage-caption {
+  margin: 1.5rem 0 0 0.2rem;
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+  font-family: var(--mono);
+}
+
+/* Compact proof block under the hero cards: fills the column and pulls the
+   "this is already running somewhere real" evidence above the fold. */
+.hero-proof {
+  margin-top: 1.4rem;
+  padding: 1.05rem 1.1rem;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.58);
+  box-shadow: 0 16px 34px -30px rgba(22, 25, 31, 0.65);
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.9rem;
+  margin: 0;
+}
+.hero-stats dt {
+  font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.07em;
+  color: var(--ink-faint); font-weight: 600;
+}
+.hero-stats dd {
+  margin: 0.15rem 0 0;
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  line-height: 1; letter-spacing: -0.02em;
+}
+
+/* ---------- ticker ---------- */
+
+.ticker-wrap {
+  overflow: hidden;
+  border-top: 1px solid var(--line-soft);
+  border-bottom: 1px solid var(--line-soft);
+  background: var(--paper-2);
+  padding: 0.7rem 0;
+  margin-bottom: clamp(2.5rem, 6vw, 4.5rem);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.ticker {
+  display: flex;
+  gap: 0.6rem;
+  width: max-content;
+  animation: slide 150s linear infinite;
+}
+.ticker-wrap:hover .ticker { animation-play-state: paused; }
+
+@keyframes slide {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.tick {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--paper);
+  font-size: 0.84rem;
+  white-space: nowrap;
+  color: var(--ink-soft);
+}
+.tick b { color: var(--ink); font-weight: 650; }
+.tick i {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--sev, var(--slate)); flex: none;
+}
+
+/* ---------- sections ---------- */
+
+.problems, .how {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 4vw, 3.5rem) clamp(3rem, 7vw, 5rem);
+}
+
+.section-head { max-width: 44rem; margin-bottom: clamp(1.6rem, 3vw, 2.4rem); }
+
+.section-head h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.8rem, 3.8vw, 2.7rem);
+  letter-spacing: -0.022em;
+  line-height: 1.1;
+  margin: 0 0 0.5rem;
+}
+
+.section-head p { margin: 0; color: var(--ink-soft); font-size: 1.02rem; }
+
+.problem-grid, .how-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  gap: clamp(0.9rem, 2vw, 1.5rem);
+}
+
+.problem, .how-card {
+  padding: 1.6rem 1.4rem 1.4rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+.problem:hover, .how-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+
+.how-card { background: linear-gradient(180deg, #fff, var(--paper-2)); }
+
+.icon {
+  display: grid; place-items: center;
+  width: 52px; height: 52px;
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--accent) 12%, #fff);
+  color: var(--ink);
+  margin-bottom: 1rem;
+}
+.icon svg { width: 30px; height: 30px; }
+
+.problem h3, .how-card h3 {
+  font-size: 1.12rem;
+  margin: 0 0 0.5rem;
+  letter-spacing: -0.012em;
+  line-height: 1.28;
+}
+
+.problem p, .how-card p { margin: 0; color: var(--ink-soft); font-size: 0.95rem; }
+
+/* Scroll reveal — IntersectionObserver adds .is-in.
+   Deliberately transform-only: an opacity-based reveal leaves content permanently
+   invisible anywhere the transition does not actually run (headless renderers,
+   some embedded browsers). Motion is an enhancement; legibility is not. */
+.reveal { transform: translateY(18px); transition: transform 0.55s cubic-bezier(0.2, 0.8, 0.3, 1); }
+.reveal.is-in { transform: none; }
+.reveal:nth-child(2) { transition-delay: 0.08s; }
+.reveal:nth-child(3) { transition-delay: 0.16s; }
+
+/* ---------- proof ---------- */
+
+.proof { background: var(--ink); color: var(--paper); }
+
+.proof-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: clamp(2.8rem, 6vw, 4.5rem) clamp(1rem, 4vw, 3.5rem);
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: clamp(1.8rem, 5vw, 4rem);
+  align-items: center;
+}
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  margin: 0 0 0.9rem;
+  padding: 0.3rem 0.8rem 0.3rem 0.6rem;
+  border: 1px solid rgba(250, 248, 244, 0.22);
+  border-radius: 999px;
+  font-size: 0.78rem;
+  color: rgba(250, 248, 244, 0.72);
+}
+
+.pulse {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: #45c9ba;
+  animation: pulse 2.4s ease-out infinite;
+}
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(69, 201, 186, 0.55); }
+  70% { box-shadow: 0 0 0 9px rgba(69, 201, 186, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(69, 201, 186, 0); }
+}
+
+.proof h2 {
+  font-family: var(--serif); font-weight: 400;
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+  letter-spacing: -0.022em;
+  margin: 0 0 0.7rem;
+}
+.proof p { margin: 0 0 1.4rem; color: rgba(250, 248, 244, 0.72); max-width: 34rem; }
+
+.proof-cta {
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  padding: 0.72rem 1.25rem;
+  border-radius: 10px;
+  background: var(--paper); color: var(--ink);
+  text-decoration: none; font-weight: 650; font-size: 0.95rem;
+  transition: transform 0.14s ease;
+}
+.proof-cta:hover { transform: translateY(-2px); }
+
+.proof-stats {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+  margin: 0;
+  background: rgba(250, 248, 244, 0.15);
+  border: 1px solid rgba(250, 248, 244, 0.15);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.proof-stats > div { background: var(--ink); padding: 1.3rem 1.15rem; }
+.proof-stats dt {
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em;
+  color: rgba(250, 248, 244, 0.55);
+}
+.proof-stats dd {
+  margin: 0.25rem 0 0;
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 3.6vw, 2.5rem);
+  line-height: 1; letter-spacing: -0.02em;
+}
+
+/* ---------- closer ---------- */
+
+.closer {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(2.2rem, 5vw, 4rem) clamp(1rem, 4vw, 3.5rem);
+  background:
+    radial-gradient(circle at 12% 18%, rgba(189, 124, 18, 0.32), transparent 23rem),
+    radial-gradient(circle at 90% 80%, rgba(15, 124, 114, 0.55), transparent 28rem),
+    linear-gradient(135deg, #16191f 0%, #252e38 55%, #123d3a 100%);
+  color: var(--paper);
+}
+
+.closer-inner {
+  position: relative;
+  max-width: 68rem;
+  margin: 0 auto;
+  padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1.4rem, 5vw, 4rem);
+  overflow: hidden;
+  border: 1px solid rgba(250, 248, 244, 0.18);
+  border-radius: 24px;
+  background: rgba(250, 248, 244, 0.055);
+  box-shadow: 0 30px 80px -45px rgba(0, 0, 0, 0.9);
+  text-align: center;
+}
+.closer-inner::after {
+  content: "";
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  right: -80px;
+  top: -95px;
+  border: 1px solid rgba(250, 248, 244, 0.18);
+  border-radius: 50%;
+  box-shadow: 0 0 0 28px rgba(250, 248, 244, 0.025), 0 0 0 56px rgba(250, 248, 244, 0.02);
+  pointer-events: none;
+}
+
+.closer-kicker {
+  margin: 0 0 0.75rem !important;
+  color: #73d9cd !important;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.closer h2 {
+  font-family: var(--serif); font-weight: 400;
+  font-size: clamp(2.25rem, 5.4vw, 4rem);
+  line-height: 1.02;
+  letter-spacing: -0.022em;
+  max-width: 13ch;
+  margin: 0 auto 0.9rem;
+}
+.closer > .closer-inner > p:not(.closer-kicker) {
+  max-width: 39rem;
+  margin: 0 auto 1.7rem;
+  color: rgba(250, 248, 244, 0.7);
+}
+.closer-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.82rem 1.25rem;
+  border-radius: 11px;
+  background: var(--paper);
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 14px 32px -18px rgba(0, 0, 0, 0.8);
+  transition: transform 0.16s ease, background 0.16s ease;
+}
+.closer-cta:hover { transform: translateY(-2px); background: #fff; }
+
+/* ---------- footer ---------- */
+
+.foot {
+  display: flex; flex-wrap: wrap; gap: 0.7rem 2rem;
+  justify-content: space-between;
+  padding: 1.8rem clamp(1rem, 4vw, 3.5rem);
+  border-top: 1px solid var(--line-soft);
+  font-size: 0.85rem; color: var(--ink-faint);
+}
+.foot p { margin: 0; }
+.foot-links { display: flex; gap: 1.1rem; }
+.foot-links a { color: var(--ink-faint); }
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 960px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-copy { padding-block: 0; }
+  .hero-stage { padding-top: 0; }
+  .float-card:nth-child(n) { margin-left: 0; }
+  .proof-inner { grid-template-columns: 1fr; }
+  .ticker-wrap { margin-bottom: 2.5rem; }
+}
+
+@media (max-width: 620px) {
+  .nav-cta { padding: 0.45rem 0.9rem; font-size: 0.88rem; }
+  /* The header only has room for one action at this width; the hero still
+     carries the shortcut. */
+  .nav-saved-district { display: none; }
+  .hero-actions { display: grid; grid-template-columns: 1fr 1fr; }
+  /* Three buttons do not divide into two columns; a returning visitor gets a
+     single stacked column instead of one orphan on a second row. */
+  .hero-actions:has(.saved-district-button:not([hidden])) { grid-template-columns: 1fr; }
+  .button { padding-inline: 0.8rem; }
+  .foot { flex-direction: column; }
+  .proof-stats { grid-template-columns: 1fr 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .ticker { animation: none; }
+  .float-card { animation: none; }
+  .pulse { animation: none; }
+  .hero-stats dd { transition: none; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  * { transition-duration: 0.01ms !important; }
+}

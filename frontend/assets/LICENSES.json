@@ -1,0 +1,21 @@
+{
+  "watercolor-schoolhouse.jpg": {
+    "title": "Old Schoolhouse, Ryders",
+    "creator": "George Luks",
+    "year": 1929,
+    "license": "public-domain",
+    "source": "https://artvee.com/dl/old-schoolhouse-ryders/",
+    "verification": "https://www.aaa.si.edu/collections/rita-and-daniel-fraad-papers-13374/series-1"
+  },
+  "watercolor-school-exterior.jpg": {
+    "title": "Hearst School for Girls: The Elevation of the Main Building",
+    "creator": "Whitney Warren Jr.",
+    "year": 1896,
+    "license": "CC0",
+    "source": "https://collection.cooperhewitt.org/view/objects/asitem/id/78771"
+  },
+  "paper.svg": {
+    "license": "Apache-2.0",
+    "source": "this repository"
+  }
+}
