@@ -20,7 +20,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "scripts" / "tools"))
 sys.path.insert(0, str(ROOT / "scripts" / "pipeline"))
 from db import connect, dict_cursor, load_env, t  # noqa: E402
-from alert_store import put_reviewed_alerts  # noqa: E402
+from page_store import put_reviewed_alerts  # noqa: E402
 from source_text import extract  # noqa: E402
 from spaces_store import get_file  # noqa: E402
 

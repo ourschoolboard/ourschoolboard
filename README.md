@@ -7,6 +7,9 @@ Open-source components of [ourschoolboard.org](https://ourschoolboard.org):
 - the public journalist alert explorer; and
 - the school-board collection, sandboxing, scheduling, transcription, and alert-review pipeline.
 
+The onboarding skill also includes guarded storage interfaces for district
+identity and pages, source-backed alerts, meeting reports, and local votes.
+
 ## Run locally
 
 Requirements: Node.js 20+, Python 3.11+, PostgreSQL, and FFmpeg when processing
@@ -25,6 +28,10 @@ npm run dev
 
 Static-page development works immediately after installing dependencies. Set
 `DATABASE_URL` to run the data APIs and collection pipeline.
+
+To exercise the guarded onboarding writers locally, set `APP_ENV=staging`, run
+`npm run migrate`, and configure the S3-compatible object-store variables in
+`.env`.
 
 ## Collection model
 
